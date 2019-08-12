@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'work_furukawa_first_gem'
+
+puts WorkFurukawaFirstGem.greet
