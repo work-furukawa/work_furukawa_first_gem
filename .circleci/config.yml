@@ -1,11 +1,14 @@
 version: 2.1
-jobs:
-  build:
+executors:
+  my-executor:
     docker:
       - image: circleci/ruby:2.6.4
         environment:
           BUNDLER_VERSION: 2.0.2
     working_directory: ~/work_furukawa_first_gem
+jobs:
+  my-job:
+    executor: my-executor
     steps:
       - checkout
       - run:
@@ -18,3 +21,7 @@ jobs:
             sudo gem install bundler
       - run: bundle update rake
       - run: bundle exec rake spec
+workflows:
+  my-workflow:
+    jobs:
+      - my-job
