@@ -6,19 +6,21 @@ executors:
         environment:
           BUNDLER_VERSION: 2.0.2
     working_directory: ~/work_furukawa_first_gem
+commands:
+  setup-bundler:
+    description: "setup bundler 2"
+    steps:
+      - run: sudo gem update --system
+      - run: sudo gem uninstall bundler
+      - run: sudo rm /usr/local/bin/bundle
+      - run: sudo rm /usr/local/bin/bundler
+      - run: sudo gem install bundler
 jobs:
   my-job:
     executor: my-executor
     steps:
       - checkout
-      - run:
-          name: setup bundler
-          command: |
-            sudo gem update --system
-            sudo gem uninstall bundler
-            sudo rm /usr/local/bin/bundle
-            sudo rm /usr/local/bin/bundler
-            sudo gem install bundler
+      - setup-bundler
       - run: bundle update rake
       - run: bundle exec rake spec
 workflows:
