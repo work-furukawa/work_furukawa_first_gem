@@ -8,4 +8,12 @@ jobs:
     working_directory: ~/work_furukawa_first_gem
     steps:
       - checkout
+      - run:
+          name: setup bundler
+          command: |
+            sudo gem update --system
+            sudo gem uninstall bundler
+            sudo rm /usr/local/bin/bundle
+            sudo rm /usr/local/bin/bundler
+            sudo gem install bundler
       - run: bundle exec rake spec
