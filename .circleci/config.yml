@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.4
+    working_directory: ~/work_furukawa_first_gem
     steps:
       - run: bundle update --bundler
       - checkout
