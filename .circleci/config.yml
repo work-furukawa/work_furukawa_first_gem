@@ -16,4 +16,5 @@ jobs:
             sudo rm /usr/local/bin/bundle
             sudo rm /usr/local/bin/bundler
             sudo gem install bundler
+      - run: bundle update rake
       - run: bundle exec rake spec
