@@ -3,6 +3,6 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.4
-    step:
+    steps:
       - checkout
       - run: bundle exec rake spec
