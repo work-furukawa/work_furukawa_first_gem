@@ -1,0 +1,8 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.4
+    step:
+      - checkout
+      - run: bundle exec rake spec
